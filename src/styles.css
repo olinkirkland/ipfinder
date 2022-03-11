@@ -1,0 +1,33 @@
+/* COLORS */
+:root {
+  --dark: #444444;
+  --dark-muted: rgba(69, 69, 69, 0.6);
+  --light: #f1f1f1;
+}
+
+/* FONTS */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* GENERAL */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html {
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Roboto', serif;
+  letter-spacing: 0.4px;
+  background-color: var(--light);
+  color: var(--dark);
+}
