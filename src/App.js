@@ -41,13 +41,14 @@ function App() {
   useEffect(() => {
     if (!ip) return;
 
-    let knownIpData = {};
+    let knownIpData;
     try {
       knownIpData = JSON.parse(localStorage.getItem('knownIpData'));
     } catch (error) {
       console.log(
         'There was a problem loading known ip data from local storage'
       );
+      knownIpData = {};
     }
 
     if (knownIpData[ip]) {
