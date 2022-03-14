@@ -48,9 +48,9 @@ function App() {
       knownIpData = JSON.parse(localStorage.getItem('knownIpData'));
     } catch (error) {
       console.log('No ip data found in local storage');
-      knownIpData = {};
     }
 
+    if (!knownIpData) knownIpData = {};
     if (knownIpData[ip]) {
       setIpData(knownIpData[ip]);
       console.log(`Found data for ip address ${ip} in local storage`);
