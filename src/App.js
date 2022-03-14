@@ -1,4 +1,6 @@
+import { Map, Marker } from 'pigeon-maps';
 import { useEffect, useState } from 'react';
+import { stamenToner } from 'pigeon-maps/providers';
 
 const months = [
   'January',
@@ -24,16 +26,36 @@ function App() {
 
   // Current IP
   useEffect(() => {
+    getIp();
+  }, []);
+
+  function getIp() {
     fetch('https://api.ipify.org?format=json').then((response) => {
       response.json().then(({ ip }) => {
         setIp(ip);
       });
     });
-  }, []);
+  }
 
   // IP Data
   useEffect(() => {
     if (!ip) return;
+
+    let knownIpData = {};
+    try {
+      knownIpData = JSON.parse(localStorage.getItem('knownIpData'));
+    } catch (error) {
+      console.log(
+        'There was a problem loading known ip data from local storage'
+      );
+    }
+
+    if (knownIpData[ip]) {
+      setIpData(knownIpData[ip]);
+      console.log(`Found data for ip address ${ip} in local storage`);
+      return;
+    }
+
     console.log(`Getting data for ip address ${ip}`);
     fetch(
       `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_GEOIPIFY}&ipAddress=${ip}`
@@ -41,6 +63,10 @@ function App() {
       response.json().then((data) => {
         console.log(data);
         setIpData(data);
+
+        // Set to local storage
+        knownIpData[ip] = data;
+        localStorage.setItem('knownIpData', JSON.stringify(knownIpData));
       });
     });
   }, [ip]);
@@ -95,6 +121,13 @@ function App() {
   function getWeatherIcon() {
     const arr = weather.weather;
     return `http://openweathermap.org/img/w/${arr[0].icon}.png`;
+  }
+
+  function clearAndReload() {
+    setIp();
+    setIpData();
+    localStorage.setItem('knownIpData', {});
+    getIp();
   }
 
   return (
@@ -158,12 +191,28 @@ function App() {
                 </div>
               </li>
             </ul>
+
+            <div className="refresh-container">
+              <a onClick={clearAndReload}>Reload data</a>
+            </div>
           </section>
         )}
 
         {ipData && (
           <section id="map">
-            <p>Map</p>
+            <Map
+              height={300}
+              width={300}
+              defaultCenter={[ipData.location.lat, ipData.location.lng]}
+              defaultZoom={10}
+              provider={stamenToner}
+              dprs={[1, 2]}
+            >
+              <Marker
+                width={50}
+                anchor={[ipData.location.lat, ipData.location.lng]}
+              />
+            </Map>
           </section>
         )}
       </article>
