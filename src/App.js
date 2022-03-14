@@ -149,7 +149,7 @@ function App() {
                 <div className="info-body">
                   <i className="fas fa-map-marker-alt"></i>
                   <a
-                    href={`https://google.com/maps/search/${ipData.location.city}, ${ipData.location.region}, ${ipData.location.country}`}
+                    href={`https://google.com/maps/search/${ipData.location.city},${ipData.location.region}, ${ipData.location.country}`}
                     target="_blank"
                   >
                     {ipData.location.city}, {ipData.location.region}
@@ -169,6 +169,12 @@ function App() {
                     href={`${ipData.as.domain}`}
                     target="_blank"
                   >{`${ipData.isp}`}</a>
+                  <a
+                    href={`https://en.wikipedia.org/wiki/${ipData.isp}`}
+                    target="_blank"
+                  >
+                    Read more
+                  </a>
                 </div>
               </li>
               <li className="info-item">
@@ -202,17 +208,13 @@ function App() {
           <section id="map">
             <Map
               height={300}
-              width={300}
+              width={`100vh`}
               defaultCenter={[ipData.location.lat, ipData.location.lng]}
               defaultZoom={10}
               provider={stamenToner}
               dprs={[1, 2]}
-            >
-              <Marker
-                width={50}
-                anchor={[ipData.location.lat, ipData.location.lng]}
-              />
-            </Map>
+              mouseEvents={false}
+            ></Map>
           </section>
         )}
       </article>

@@ -68,7 +68,7 @@ article {
 }
 
 section {
-  max-width: 96rem;
+  width: 96rem;
   padding: 2rem 2rem;
   background-color: var(--foreground);
   border-radius: 5px;
@@ -77,6 +77,12 @@ section {
 
 section#loading {
   text-align: center;
+}
+
+section#info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 section#info > p {
@@ -93,9 +99,11 @@ section#info > h1 {
 /* INFO */
 
 .info-grid {
+  width: fit-content;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   border-radius: 5px;
+  border: 1px solid var(--background);
 }
 
 .info-grid > .info-item {
