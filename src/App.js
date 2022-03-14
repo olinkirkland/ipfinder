@@ -45,9 +45,7 @@ function App() {
     try {
       knownIpData = JSON.parse(localStorage.getItem('knownIpData'));
     } catch (error) {
-      console.log(
-        'There was a problem loading known ip data from local storage'
-      );
+      console.log('No known ip data found');
       knownIpData = {};
     }
 
@@ -57,12 +55,12 @@ function App() {
       return;
     }
 
-    console.log(`Getting data for ip address ${ip}`);
+    console.log(`Fetching data for ip address ${ip}`);
     fetch(
       `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_GEOIPIFY}&ipAddress=${ip}`
     ).then((response) => {
       response.json().then((data) => {
-        console.log(data);
+        data['retrieved'] = Date.now();
         setIpData(data);
 
         // Set to local storage
@@ -98,7 +96,7 @@ function App() {
     let now = new Date();
     now = new Date(`${now.toUTCString()}${offset.replaceAll(':', '')}`);
     setTime(`${now.toLocaleTimeString()}`);
-    setDate(`${months[now.getMonth()]} ${now.getDay()}, ${now.getFullYear()}`);
+    setDate(`${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`);
   }
 
   function kelvinToCelcius(value) {
