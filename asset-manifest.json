@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/olinkirkland.github.io/ipfinder/static/css/main.9ea0e1bb.css",
-    "main.js": "/olinkirkland.github.io/ipfinder/static/js/main.6b0a7312.js",
+    "main.css": "/olinkirkland.github.io/ipfinder/static/css/main.02f958a7.css",
+    "main.js": "/olinkirkland.github.io/ipfinder/static/js/main.4f5ddafd.js",
     "index.html": "/olinkirkland.github.io/ipfinder/index.html",
-    "main.9ea0e1bb.css.map": "/olinkirkland.github.io/ipfinder/static/css/main.9ea0e1bb.css.map",
-    "main.6b0a7312.js.map": "/olinkirkland.github.io/ipfinder/static/js/main.6b0a7312.js.map"
+    "main.02f958a7.css.map": "/olinkirkland.github.io/ipfinder/static/css/main.02f958a7.css.map",
+    "main.4f5ddafd.js.map": "/olinkirkland.github.io/ipfinder/static/js/main.4f5ddafd.js.map"
   },
   "entrypoints": [
-    "static/css/main.9ea0e1bb.css",
-    "static/js/main.6b0a7312.js"
+    "static/css/main.02f958a7.css",
+    "static/js/main.4f5ddafd.js"
   ]
 }
