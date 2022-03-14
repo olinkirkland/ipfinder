@@ -1,6 +1,7 @@
 import { Map, Marker } from 'pigeon-maps';
 import { useEffect, useState } from 'react';
 import { stamenToner } from 'pigeon-maps/providers';
+import Util from './Util';
 
 const months = [
   'January',
@@ -41,11 +42,12 @@ function App() {
   useEffect(() => {
     if (!ip) return;
 
+    console.log('Checking local storage for known ip data');
     let knownIpData;
     try {
       knownIpData = JSON.parse(localStorage.getItem('knownIpData'));
     } catch (error) {
-      console.log('No known ip data found');
+      console.log('No ip data found in local storage');
       knownIpData = {};
     }
 
@@ -60,7 +62,7 @@ function App() {
       `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_GEOIPIFY}&ipAddress=${ip}`
     ).then((response) => {
       response.json().then((data) => {
-        data['retrieved'] = Date.now();
+        data['retrieved'] = new Date();
         setIpData(data);
 
         // Set to local storage
@@ -77,7 +79,6 @@ function App() {
       `https://api.openweathermap.org/data/2.5/weather?lat=${ipData.location.lat}&lon=${ipData.location.lng}&appid=${process.env.REACT_APP_OPEN_WEATHER}`
     ).then((response) => {
       response.json().then((data) => {
-        console.log(data);
         setWeather(data);
       });
     });
@@ -123,6 +124,7 @@ function App() {
   }
 
   function clearAndReload() {
+    console.log('Reset local storage');
     setIp();
     setIpData();
     localStorage.setItem('knownIpData', {});
@@ -197,7 +199,10 @@ function App() {
               </li>
             </ul>
 
-            <div className="refresh-container">
+            <div className="reload-container">
+              <p className="muted">{`Last retrieved ${Util.toAge(
+                ipData.retrieved
+              )}`}</p>
               <a onClick={clearAndReload}>Reload data</a>
             </div>
           </section>

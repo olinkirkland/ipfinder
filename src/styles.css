@@ -135,10 +135,12 @@ a > .flag {
   opacity: 0.4;
 }
 
-.refresh-container {
+.reload-container {
   margin-top: 2.4rem;
   display: flex;
-  justify-content: center;
+  gap: 0.4rem;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* MAP */
