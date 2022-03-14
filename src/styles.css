@@ -51,6 +51,10 @@ a:hover {
   opacity: 0.4;
 }
 
+.capitalized {
+  text-transform: capitalize;
+}
+
 /* SECTIONS */
 
 article {

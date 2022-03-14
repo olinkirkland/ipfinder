@@ -87,7 +87,15 @@ function App() {
     return 'full';
   }
 
-  function getWeatherIcon() {}
+  function getWeatherDescription() {
+    const arr = weather.weather;
+    return arr.map((w) => w.description);
+  }
+
+  function getWeatherIcon() {
+    const arr = weather.weather;
+    return `http://openweathermap.org/img/w/${arr[0].icon}.png`;
+  }
 
   return (
     <>
@@ -145,7 +153,8 @@ function App() {
                     className={`fas fa-thermometer-${getTemperatureIcon()}`}
                   ></i>
                   <p>{`${kelvinToCelcius(weather.main.temp)} °C`}</p>
-                  <i className={`fas fa-${getWeatherIcon()}`}></i>
+                  <p className="muted"> • </p>
+                  <p className="capitalized">{getWeatherDescription()}</p>
                 </div>
               </li>
             </ul>
