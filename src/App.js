@@ -213,7 +213,6 @@ function App() {
               defaultZoom={10}
               provider={stamenToner}
               dprs={[1, 2]}
-              mouseEvents={false}
             ></Map>
           </section>
         )}
