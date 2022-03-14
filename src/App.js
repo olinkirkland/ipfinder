@@ -209,7 +209,6 @@ function App() {
           <section id="map">
             <Map
               height={300}
-              width={`100vh`}
               defaultCenter={[ipData.location.lat, ipData.location.lng]}
               defaultZoom={10}
               provider={stamenToner}
