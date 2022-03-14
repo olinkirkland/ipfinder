@@ -1,8 +1,10 @@
 /* COLORS */
 :root {
-  --dark: #444444;
-  --dark-muted: rgba(69, 69, 69, 0.6);
-  --light: #f1f1f1;
+  --background: #212121;
+  --foreground: #2b2b2b;
+  --text: #fafafa;
+  --primary: #8ce99a;
+  --secondary: #ffe380;
 }
 
 /* FONTS */
@@ -28,6 +30,94 @@ body {
   font-size: 1.6rem;
   font-family: 'Roboto', serif;
   letter-spacing: 0.4px;
-  background-color: var(--light);
-  color: var(--dark);
+  font-weight: 100;
+  line-height: 1.6;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px dashed var(--text);
+  transition: all 0.3s;
+}
+
+a:hover {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0);
+}
+
+.muted {
+  opacity: 0.4;
+}
+
+/* SECTIONS */
+
+article {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+section {
+  max-width: 96rem;
+  padding: 2rem 2rem;
+  background-color: var(--foreground);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
+}
+
+section#loading {
+  text-align: center;
+}
+
+section#info > p {
+  text-align: center;
+  color: var(--text);
+}
+
+section#info > h1 {
+  text-align: center;
+  font-size: 3.2rem;
+  color: var(--primary);
+}
+
+/* INFO */
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: 5px;
+}
+
+.info-grid > .info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+.info-body {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.info-body > i {
+  opacity: 0.4;
+  font-size: 1.6rem;
+}
+
+a > .flag {
+  margin-left: 0.6rem;
+  height: 1.4rem;
+  border-radius: 3px;
+}
+
+.info-label {
+  font-size: 1.2rem;
+  opacity: 0.4;
 }
