@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/olinkirkland.github.io/ipfinder/static/css/main.9dfeb48e.css",
+    "main.js": "/olinkirkland.github.io/ipfinder/static/js/main.4e8dc182.js",
+    "index.html": "/olinkirkland.github.io/ipfinder/index.html",
+    "main.9dfeb48e.css.map": "/olinkirkland.github.io/ipfinder/static/css/main.9dfeb48e.css.map",
+    "main.4e8dc182.js.map": "/olinkirkland.github.io/ipfinder/static/js/main.4e8dc182.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9dfeb48e.css",
+    "static/js/main.4e8dc182.js"
+  ]
+}
