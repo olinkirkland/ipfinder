@@ -42,7 +42,7 @@ function App() {
   useEffect(() => {
     if (!ip) return;
 
-    console.log('Checking local storage for known ip data');
+    console.log('Checking local storage for known ip data ...');
     let knownIpData;
     try {
       knownIpData = JSON.parse(localStorage.getItem('knownIpData'));
@@ -57,10 +57,11 @@ function App() {
       return;
     }
 
-    console.log(`Fetching data for ip address ${ip}`);
+    console.log(`Fetching data for ip address ${ip} ...`);
     fetch(
       `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_GEOIPIFY}&ipAddress=${ip}`
     ).then((response) => {
+      console.log(response);
       response.json().then((data) => {
         data['retrieved'] = new Date();
         setIpData(data);
